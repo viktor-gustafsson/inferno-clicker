@@ -1,20 +1,25 @@
 const startButton = document.getElementById('startButton');
 startButton.addEventListener('click', startGame);
-let totalTimeRemaining = 300; // Total time in seconds
+let buttonCounterElement = document.getElementById('buttonCounter');
+let totalButtonCount = 10;
+let currentButtonCount = 0;
+const buttonMaxDelay = 300;
+const buttonMinDelay = 100;
+const secondsMultiplier = 100;
+const buttonTimer = 8;
 
 function startGame() {
     this.disabled = true; // Disable the start button
     this.style.display = 'none';
-    spawnButton(0); // Start the first button immediately
-    startTotalTimeCounter();
+    spawnButton(currentButtonCount); // Start the first button immediately
+    startButtonCounter();
 }
 
 function spawnButton(buttonCount) {
-    if (buttonCount >= 10) {
-        document.body.style.backgroundColor = "green";
+    if (buttonCount >= totalButtonCount) {
+        winGame();
         return;
     }
-
     const buttonContainer = document.getElementById('buttonContainer');
     clearExistingButtonAndTimer(buttonContainer);
 
@@ -22,26 +27,25 @@ function spawnButton(buttonCount) {
     buttonContainer.appendChild(button);
     positionTimerDisplay(button); // Position the button
 
-    let timeLeft = 8; // 8 seconds countdown
+    let timeLeft = buttonTimer; // 8 seconds countdown
     const timer = setInterval(() => {
         timeLeft--;
         button.innerText = `${timeLeft}`; // Update button text with countdown
         if (timeLeft <= 0) {
             clearInterval(timer);
             if (button.parentElement) {
-                clearExistingButtonAndTimer(buttonContainer);
-                document.body.style.backgroundColor = "red";
-                document.getElementById('totalTimeCounter').style.display = 'none';
-                totalTimeRemaining = 300;
-                startCooldown(); // Start the 30-second cooldown
+                looseGame();
             }
         }
     }, 1000);
 
     button.addEventListener('click', function() {
+        console.log(currentButtonCount);
+        currentButtonCount++;
         clearInterval(timer);
         clearExistingButtonAndTimer(buttonContainer);
-        scheduleNextButton(buttonCount + 1);
+        scheduleNextButton(currentButtonCount);
+        updateButtonCounter();
     });
 }
 
@@ -53,7 +57,7 @@ function clearExistingButtonAndTimer(buttonContainer) {
 function createButton() {
     const button = document.createElement('button');
     button.classList.add('dynamicButton');
-    button.innerText = '8'; // Initial text with countdown
+    button.innerText = buttonTimer; // Initial text with countdown
     return button;
 }
 
@@ -70,7 +74,7 @@ function positionTimerDisplay(button) {
 }
 
 function scheduleNextButton(buttonCount) {
-    const delay = Math.random() * (30000 - 10000) + 10000;
+    const delay = Math.random() * (buttonMaxDelay - buttonMinDelay) + secondsMultiplier;
     setTimeout(() => {
         spawnButton(buttonCount);
     }, delay);
@@ -93,30 +97,42 @@ function startCooldown() {
     }, 1000);
 }
 
-function startTotalTimeCounter() {
-    updateTotalTimeCounter(); // Update the display immediately
-    document.getElementById('totalTimeCounter').style.display = 'block';
-    const totalTimeCounterInterval = setInterval(() => {
-        totalTimeRemaining--;
-        updateTotalTimeCounter();
-
-        if (totalTimeRemaining <= 0) {
-            clearInterval(totalTimeCounterInterval);
-            // Additional logic when the countdown finishes
-        }
-    }, 1000);
+function startButtonCounter() {
+    updateButtonCounter(); // Update the display immediately
+    buttonCounterElement.style.display = 'block';
 }
 
-function updateTotalTimeCounter() {
-    const counterElement = document.getElementById('totalTimeCounter');
-    counterElement.innerText = `Time remaining: ${totalTimeRemaining}`;
+function updateButtonCounter() {
+    buttonCounterElement.innerText = `Buttons remaining: ${currentButtonCount}/${totalButtonCount}`;
 }
 
 function resetBackground() {
-    document.body.style.backgroundColor = "white";
+    document.body.style.backgroundColor = "#333";
 }
 
 function enableStartButton() {
     startButton.disabled = false;
     startButton.innerText = 'Start'; // Reset the text on the button
+}
+
+function enableFinished() {
+    let elemet = document.getElementById('finished');
+    elemet.style.display = 'block';
+}
+
+function disableButtonCounterAnimation() {
+    buttonCounterElement.style.animation = 'none';
+}
+
+function winGame() {
+    document.body.style.backgroundColor = "green";
+    enableFinished();
+    disableButtonCounterAnimation();
+}
+
+function looseGame() {
+    clearExistingButtonAndTimer(buttonContainer);
+    document.body.style.backgroundColor = "#53202d";
+    startCooldown(); // Start the 30-second cooldown
+    buttonCounterElement.style.display = 'none';
 }

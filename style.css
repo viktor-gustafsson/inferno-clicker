@@ -20,11 +20,34 @@
     100% { opacity: 1; }
 }
 
-#totalTimeCounter {
+#finished {
+    display: none;
+    position: absolute;
+    top: calc(50% + 60px);
+    left: 50%;
+    transform: translate(-50%, -50%);
+    color: #f0f0f0; /* Light color for contrast */
+    background-color: #4b5320; /* Olive green, common in military gear */
+    padding: 10px 20px;
+    border: 1px solid #f0f0f0; /* Light border color */
+    border-radius: 5px;
+    text-align: center;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.5); /* Add some depth */
+    font-size: 18px;
+    letter-spacing: 1px; /* Space out the characters a bit */
+    margin: 10px; /* Add some margin around the element */
+    animation: blink 1s infinite;
+}
+#shit{
+    background-color: #53202d;
+}
+
+#buttonCounter {
     display: none;
     position: absolute;
     top: 50%;
     left: 50%;
+    transform: translate(-50%, -50%);
     color: #f0f0f0; /* Light color for contrast */
     background-color: #4b5320; /* Olive green, common in military gear */
     padding: 10px 20px;
@@ -45,7 +68,7 @@
     font-size: 16px;
     background-color: #4b5320; /* Green background */
     color: white; /* White text */
-    border: none;
+    border: 1px solid #f0f0f0; /* Light border color */
     border-radius: 5px; /* Rounded corners */
     cursor: pointer;
     transition: background-color 0.3s, transform 0.2s; /* Smooth transition for hover effects */
@@ -80,7 +103,7 @@ body {
     font-family: 'segment', sans-serif; /* Fallback to sans-serif if custom font fails */
     padding: 10px 20px;
     font-size: 18px;
-    background-color: #4CAF50; /* Blue background */
+    background-color: #4b5320; /* Blue background */
     color: white;
     border: none;
     border-radius: 5px;
@@ -88,8 +111,9 @@ body {
     position: absolute;
     top: 50%;
     left: 50%;
+    transform: translate(-50%, -50%);
 }
 
 #startButton:hover {
-    background-color: #007B9E; /* Darker shade of blue on hover */
+    background-color: #45a049; /* Darker shade of blue on hover */
 }
