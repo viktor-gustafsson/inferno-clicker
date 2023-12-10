@@ -9,9 +9,9 @@ const secondsMultiplier = 10000;
 const buttonTimer = 8;
 
 function startGame() {
-    this.disabled = true; // Disable the start button
+    this.disabled = true;
     this.style.display = 'none';
-    spawnButton(currentButtonCount); // Start the first button immediately
+    spawnButton(currentButtonCount);
     startButtonCounter();
 }
 
@@ -25,12 +25,12 @@ function spawnButton(buttonCount) {
 
     const button = createButton();
     buttonContainer.appendChild(button);
-    positionTimerDisplay(button); // Position the button
+    positionTimerDisplay(button);
 
-    let timeLeft = buttonTimer; // 8 seconds countdown
+    let timeLeft = buttonTimer;
     const timer = setInterval(() => {
         timeLeft--;
-        button.innerText = `${timeLeft}`; // Update button text with countdown
+        button.innerText = `${timeLeft}`;
         if (timeLeft <= 0) {
             clearInterval(timer);
             if (button.parentElement) {
@@ -58,7 +58,7 @@ function createButton() {
     const button = document.createElement('button');
     button.classList.add('dynamicButton');
     button.classList.add('font-style')
-    button.innerText = buttonTimer; // Initial text with countdown
+    button.innerText = buttonTimer;
     return button;
 }
 
@@ -83,7 +83,7 @@ function scheduleNextButton(buttonCount) {
 
 function startCooldown() {
     startButton.disabled = true;
-    let cooldownTime = 30; // 30 seconds cooldown
+    let cooldownTime = 30;
     startButton.innerText = `Cooldown: ${cooldownTime} s`;
     startButton.style.display = 'block';
 
@@ -100,7 +100,7 @@ function startCooldown() {
 }
 
 function startButtonCounter() {
-    updateButtonCounter(); // Update the display immediately
+    updateButtonCounter();
     buttonCounterElement.style.display = 'block';
 }
 
@@ -114,7 +114,7 @@ function resetBackground() {
 
 function enableStartButton() {
     startButton.disabled = false;
-    startButton.innerText = 'Start'; // Reset the text on the button
+    startButton.innerText = 'Start';
 }
 
 function enableFailed() {
@@ -146,6 +146,6 @@ function looseGame() {
     enableFailed();
     clearExistingButtonAndTimer(buttonContainer);
     document.body.style.backgroundColor = "#53202d";
-    startCooldown(); // Start the 30-second cooldown
+    startCooldown();
     buttonCounterElement.style.display = 'none';
 }
