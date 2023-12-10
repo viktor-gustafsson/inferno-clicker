@@ -5,10 +5,24 @@
     font-style: normal;
 }
 
+#hackingBackground {
+    background-color: black;
+    color: green;
+    font-family: 'Courier New', Courier, monospace;
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    overflow: hidden;
+    z-index: 0;
+    user-select: none;
+}
+
 .font-style {
     font-family: 'segment', sans-serif;
     font-size: 36px;
-    letter-spacing: 1px;/
+    letter-spacing: 1px;
 }
 
 #buttonContainer {
@@ -26,7 +40,12 @@
 }
 
 #failed{
-    background-color: brown;
+    background-color: darkred;
+}
+
+#waiting{
+    animation: none;
+    top: calc(50% + 80px);
 }
 
 .message-style{
@@ -44,6 +63,7 @@
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.5);
     margin: 10px;
     animation: blink 1s infinite;
+    z-index: 1;
 }
 
 #buttonCounter {
@@ -61,6 +81,7 @@
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.5);
     margin: 10px;
     animation: blink 1s infinite;
+    z-index: 1;
 }
 
 .dynamicButton {
@@ -72,11 +93,7 @@
     border-radius: 5px;
     cursor: pointer;
     transition: background-color 0.3s, transform 0.2s;
-}
-
-.dynamicButton:hover {
-    background-color: #45a049;
-    transform: scale(1.1);
+    z-index: 1;
 }
 
 .timerDisplay {
@@ -93,7 +110,6 @@ body {
     display: flex;
     justify-content: center;
     align-items: center;
-    background-color: #333;
 }
 
 #startButton {
@@ -107,8 +123,5 @@ body {
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
-}
-
-#startButton:hover {
-    background-color: #45a049;
+    z-index: 1;
 }

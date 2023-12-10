@@ -46,6 +46,7 @@ function spawnButton(buttonCount) {
         clearExistingButtonAndTimer(buttonContainer);
         scheduleNextButton(currentButtonCount);
         updateButtonCounter();
+        enableWaiting();
     });
 }
 
@@ -55,6 +56,7 @@ function clearExistingButtonAndTimer(buttonContainer) {
 }
 
 function createButton() {
+    disableWaiting();
     const button = document.createElement('button');
     button.classList.add('dynamicButton');
     button.classList.add('font-style')
@@ -105,7 +107,7 @@ function startButtonCounter() {
 }
 
 function updateButtonCounter() {
-    buttonCounterElement.innerText = `Buttons remaining: ${currentButtonCount}/${totalButtonCount}`;
+    buttonCounterElement.innerText = `Sequence in progress... ${currentButtonCount}/${totalButtonCount}`;
 }
 
 function resetBackground() {
@@ -138,14 +140,54 @@ function disableButtonCounterAnimation() {
 
 function winGame() {
     document.body.style.backgroundColor = "green";
+    disableWaiting();
     enableFinished();
     disableButtonCounterAnimation();
 }
 
 function looseGame() {
+    disableWaiting();
     enableFailed();
     clearExistingButtonAndTimer(buttonContainer);
     document.body.style.backgroundColor = "#53202d";
     startCooldown();
     buttonCounterElement.style.display = 'none';
 }
+
+function enableWaiting(){
+    document.getElementById("waiting").style.display = 'block';
+}
+
+function disableWaiting(){
+    document.getElementById("waiting").style.display = 'none';
+}
+
+function generateRandomCode() {
+    let characters = '01';
+    let codeLength = 100;
+    let randomCode = '';
+
+    for (let i = 0; i < codeLength; i++) {
+        randomCode += characters.charAt(Math.floor(Math.random() * characters.length));
+    }
+
+    return randomCode;
+}
+
+function createCodeLine() {
+    let codeLine = document.createElement('div');
+    codeLine.textContent = generateRandomCode();
+    codeLine.style.position = 'absolute';
+    codeLine.style.whiteSpace = 'nowrap';
+    codeLine.style.top = `${Math.floor(Math.random() * window.innerHeight)}px`;
+    codeLine.style.left = `${Math.floor(Math.random() * window.innerWidth)}px`;
+    codeLine.style.opacity = Math.random();
+
+    document.getElementById('hackingBackground').appendChild(codeLine);
+
+    setTimeout(() => {
+        document.getElementById('hackingBackground').removeChild(codeLine);
+    }, 3000);
+}
+
+setInterval(createCodeLine, 150);
