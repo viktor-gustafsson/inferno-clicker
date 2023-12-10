@@ -77,7 +77,9 @@ function positionTimerDisplay(button) {
 }
 
 function scheduleNextButton(buttonCount) {
-    const delay = Math.random() * (buttonMaxDelay - buttonMinDelay) + secondsMultiplier;
+    let delay = Math.random() * (buttonMaxDelay- buttonMinDelay) + secondsMultiplier;
+    delay = Math.floor(delay);
+    console.log(delay);
     setTimeout(() => {
         spawnButton(buttonCount);
     }, delay);
