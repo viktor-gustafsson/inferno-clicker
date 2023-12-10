@@ -5,8 +5,13 @@
     font-style: normal; /* Specify the style */
 }
 
-#buttonContainer {
+.font-style {
     font-family: 'segment', sans-serif; /* Fallback to sans-serif if custom font fails */
+    font-size: 36px;
+    letter-spacing: 1px; /* Space out the characters a bit */
+}
+
+#buttonContainer {
     position: absolute;
     top: 0;
     left: 0;
@@ -37,8 +42,6 @@
     border-radius: 5px;
     text-align: center;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.5); /* Add some depth */
-    font-size: 18px;
-    letter-spacing: 1px; /* Space out the characters a bit */
     margin: 10px; /* Add some margin around the element */
     animation: blink 1s infinite;
 }
@@ -56,17 +59,17 @@
     border-radius: 5px;
     text-align: center;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.5); /* Add some depth */
-    font-size: 18px;
-    letter-spacing: 1px; /* Space out the characters a bit */
+    /* font-size: 18px; */
+    /* letter-spacing: 1px; Space out the characters a bit */
     margin: 10px; /* Add some margin around the element */
     animation: blink 1s infinite;
 }
 
 .dynamicButton {
-    font-family: 'segment', sans-serif; /* Fallback to sans-serif if custom font fails */
+    /* font-family: 'segment', sans-serif; Fallback to sans-serif if custom font fails */
     position: absolute;
     padding: 10px 20px;
-    font-size: 16px;
+    /* font-size: 16px; */
     background-color: #4b5320; /* Green background */
     color: white; /* White text */
     border: 1px solid #f0f0f0; /* Light border color */
@@ -83,7 +86,7 @@
 .timerDisplay {
     position: absolute;
     color: #333; /* Dark text color for the timer */
-    font-size: 14px;
+    /* font-size: 14px; */
     margin-top: 5px; /* Spacing between the button and the timer */
     text-align: center; /* Center the text */
     width: 100px; /* Set a fixed width for the timer display */
@@ -97,13 +100,13 @@ body {
     justify-content: center;
     align-items: center;
     background-color: #333;
-    font-family: 'segment', sans-serif; /* Fallback to sans-serif if custom font fails */
+    /* font-family: 'segment', sans-serif; Fallback to sans-serif if custom font fails */
 }
 
 #startButton {
-    font-family: 'segment', sans-serif; /* Fallback to sans-serif if custom font fails */
+    /* font-family: 'segment', sans-serif; Fallback to sans-serif if custom font fails */
     padding: 10px 20px;
-    font-size: 18px;
+    /* font-size: 18px; */
     background-color: #4b5320; /* Blue background */
     color: white;
     border: none;

@@ -57,6 +57,7 @@ function clearExistingButtonAndTimer(buttonContainer) {
 function createButton() {
     const button = document.createElement('button');
     button.classList.add('dynamicButton');
+    button.classList.add('font-style')
     button.innerText = buttonTimer; // Initial text with countdown
     return button;
 }
@@ -83,12 +84,12 @@ function scheduleNextButton(buttonCount) {
 function startCooldown() {
     startButton.disabled = true;
     let cooldownTime = 30; // 30 seconds cooldown
-    startButton.innerText = `Cooldown: ${cooldownTime}s`;
+    startButton.innerText = `Cooldown: ${cooldownTime} s`;
     startButton.style.display = 'block';
 
     const cooldownTimer = setInterval(() => {
         cooldownTime--;
-        startButton.innerText = `Cooldown: ${cooldownTime}s`;
+        startButton.innerText = `Cooldown: ${cooldownTime} s`;
         if (cooldownTime <= 0) {
             clearInterval(cooldownTimer);
             resetBackground();
