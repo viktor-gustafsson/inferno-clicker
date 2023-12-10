@@ -20,7 +20,11 @@
     100% { opacity: 1; }
 }
 
-#finished {
+#failed{
+    background-color: brown;
+}
+
+.message-style{
     display: none;
     position: absolute;
     top: calc(50% + 60px);
@@ -37,9 +41,6 @@
     letter-spacing: 1px; /* Space out the characters a bit */
     margin: 10px; /* Add some margin around the element */
     animation: blink 1s infinite;
-}
-#shit{
-    background-color: #53202d;
 }
 
 #buttonCounter {

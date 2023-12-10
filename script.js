@@ -3,9 +3,9 @@ startButton.addEventListener('click', startGame);
 let buttonCounterElement = document.getElementById('buttonCounter');
 let totalButtonCount = 10;
 let currentButtonCount = 0;
-const buttonMaxDelay = 300;
-const buttonMinDelay = 100;
-const secondsMultiplier = 100;
+const buttonMaxDelay = 30000;
+const buttonMinDelay = 10000;
+const secondsMultiplier = 10000;
 const buttonTimer = 8;
 
 function startGame() {
@@ -93,6 +93,7 @@ function startCooldown() {
             clearInterval(cooldownTimer);
             resetBackground();
             enableStartButton();
+            disableFailed();
         }
     }, 1000);
 }
@@ -115,6 +116,16 @@ function enableStartButton() {
     startButton.innerText = 'Start'; // Reset the text on the button
 }
 
+function enableFailed() {
+    let elemet = document.getElementById('failed');
+    elemet.style.display = 'block';
+}
+
+function disableFailed() {
+    let elemet = document.getElementById('failed');
+    elemet.style.display = 'none';
+}
+
 function enableFinished() {
     let elemet = document.getElementById('finished');
     elemet.style.display = 'block';
@@ -131,6 +142,7 @@ function winGame() {
 }
 
 function looseGame() {
+    enableFailed();
     clearExistingButtonAndTimer(buttonContainer);
     document.body.style.backgroundColor = "#53202d";
     startCooldown(); // Start the 30-second cooldown
