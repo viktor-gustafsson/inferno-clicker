@@ -40,7 +40,6 @@ function spawnButton(buttonCount) {
     }, 1000);
 
     button.addEventListener('click', function() {
-        console.log(currentButtonCount);
         currentButtonCount++;
         clearInterval(timer);
         clearExistingButtonAndTimer(buttonContainer);
@@ -79,7 +78,6 @@ function positionTimerDisplay(button) {
 function scheduleNextButton(buttonCount) {
     let delay = Math.random() * (buttonMaxDelay- buttonMinDelay) + secondsMultiplier;
     delay = Math.floor(delay);
-    console.log(delay);
     setTimeout(() => {
         spawnButton(buttonCount);
     }, delay);
