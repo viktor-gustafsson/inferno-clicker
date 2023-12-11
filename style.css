@@ -62,14 +62,6 @@
     top: calc(50% + 80px);
 }
 
-.timerDisplay {
-    position: absolute;
-    color: #333;
-    margin-top: 5px;
-    text-align: center;
-    width: 100px;
-}
-
 body {
     margin: 0;
     padding: 0;
