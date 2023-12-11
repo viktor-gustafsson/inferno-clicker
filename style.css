@@ -50,11 +50,11 @@
 
 #failed {
     background-color: darkred;
-    top: calc(50% + 80px);
+    top: calc(50% + 30px);
 }
 
 #finished {
-    top: calc(50% + 80px);
+    top: calc(50% + 30px);
 }
 
 #waiting {
@@ -70,7 +70,7 @@ body {
     align-items: center;
 }
 
-button {
+button, p {
     background-image: url('./pngwing.png'), linear-gradient(#688e4b, #4b5320); /* Adjusted the gradient colors to be lighter */
     background-blend-mode: overlay;
     background-size: cover;
@@ -90,23 +90,6 @@ button {
 }
 
 p {
-    background-image: url('./pngwing.png'), linear-gradient(#688e4b, #4b5320); /* Adjusted the gradient colors to be lighter */
-    background-blend-mode: overlay;
-    background-size: cover;
-    background-position: center;
-    background-repeat: no-repeat;
     display: none;
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    color: #f0f0f0;
-    background-color: #4b5320;
-    padding: 10px 20px;
-    border-radius: 5px;
-    text-align: center;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.5);
-    margin: 10px;
     animation: blink 1s infinite;
-    z-index: 1;
 }
