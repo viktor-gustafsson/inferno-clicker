@@ -72,7 +72,7 @@ body {
 
 button, p {
     background-image: url('./pngwing.png'), linear-gradient(#688e4b, #4b5320); /* Adjusted the gradient colors to be lighter */
-    background-blend-mode: overlay;
+    background-blend-mode: multiply;
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;

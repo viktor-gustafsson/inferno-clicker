@@ -6,7 +6,7 @@ let currentButtonCount = 0;
 const buttonMaxDelay = 30000;
 const buttonMinDelay = 10000;
 const secondsMultiplier = 10000;
-const buttonTimer = 8;
+const buttonTimer = 5;
 
 function startGame() {
     this.disabled = true;
@@ -94,7 +94,6 @@ function startCooldown() {
         startButton.innerText = `Cooldown: ${cooldownTime} s`;
         if (cooldownTime <= 0) {
             clearInterval(cooldownTimer);
-            resetBackground();
             enableStartButton();
             disableFailed();
         }
@@ -108,10 +107,6 @@ function startButtonCounter() {
 
 function updateButtonCounter() {
     buttonCounterElement.innerText = `Sequence in progress... ${currentButtonCount}/${totalButtonCount}`;
-}
-
-function resetBackground() {
-    document.body.style.backgroundColor = "#333";
 }
 
 function enableStartButton() {
