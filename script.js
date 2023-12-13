@@ -1,12 +1,23 @@
+let data = {
+    1234 : {
+        totalButtonCount: 5,
+        response: 666
+    },
+    5678 : {
+        totalButtonCount: 10,
+        response: 999
+    } 
+}
+
 let coolDownButton = document.getElementById('coolDown');
 let buttonCounterElement = document.getElementById('buttonCounter');
 let keypad = document.getElementById('keypad');
-let totalButtonCount = 10;
 let currentButtonCount = 0;
-const buttonMaxDelay = 30000;
-const buttonMinDelay = 10000;
-const secondsMultiplier = 10000;
+const buttonMaxDelay = 300;
+const buttonMinDelay = 100;
+const secondsMultiplier = 100;
 const buttonTimer = 5;
+let currentRun = null;
 
 document.querySelectorAll('#keys button').forEach(button => {
     button.addEventListener('click', () => {
@@ -26,7 +37,8 @@ function clearInput() {
 function submitCode() {
     let code = document.getElementById('codeInput').value;
     console.log('CODE IS ' + code);
-    if (code === '1234') {
+    currentRun = data[code]
+    if (currentRun != null) {
         console.log('START GAME');
         startGame();
     } else {
@@ -36,6 +48,7 @@ function submitCode() {
 
 
 function startGame() {
+    setInterval(createCodeLine, 150);
     coolDownButton.disabled = true;
     coolDownButton.style.display = 'none';
     keypad.style.display = 'none';
@@ -45,7 +58,7 @@ function startGame() {
 }
 
 function spawnButton(buttonCount) {
-    if (buttonCount >= totalButtonCount) {
+    if (buttonCount >= currentRun.totalButtonCount) {
         winGame();
         return;
     }
@@ -134,7 +147,7 @@ function startButtonCounter() {
 }
 
 function updateButtonCounter() {
-    buttonCounterElement.innerText = `Sequence in progress... ${currentButtonCount}/${totalButtonCount}`;
+    buttonCounterElement.innerText = `Sequence in progress... ${currentButtonCount}/${currentRun.totalButtonCount}`;
 }
 
 function enableFailed() {
@@ -154,6 +167,12 @@ function winGame() {
     disableWaiting();
     enableFinished();
     disableButtonCounter();
+    enableResponse();
+}
+
+function enableResponse() {
+    document.getElementById('response').style.display = 'block';
+    document.getElementById('response').innerText = 'Response code: ' + currentRun.response;
 }
 
 function looseGame() {
@@ -200,5 +219,3 @@ function createCodeLine() {
         document.getElementById('hackingBackground').removeChild(codeLine);
     }, 3000);
 }
-
-setInterval(createCodeLine, 150);
