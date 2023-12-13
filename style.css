@@ -96,7 +96,7 @@ p {
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
-    width: 200px;
+    width: 220px;
     margin: 0 auto;
     padding: 20px;
     border: 1px solid #000;
@@ -118,7 +118,7 @@ p {
 #keys {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
-    gap: 10px;
+    gap: 5px;
 }
 
 #keys button {
@@ -129,6 +129,7 @@ p {
     background-color: #4caf50;
     color: white;
     cursor: pointer;
+    width: 68px;
 }
 
 #keys button:hover {
