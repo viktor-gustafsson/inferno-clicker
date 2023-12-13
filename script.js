@@ -1,6 +1,6 @@
-const startButton = document.getElementById('startButton');
-startButton.addEventListener('click', startGame);
+let coolDownButton = document.getElementById('coolDown');
 let buttonCounterElement = document.getElementById('buttonCounter');
+let keypad = document.getElementById('keypad');
 let totalButtonCount = 10;
 let currentButtonCount = 0;
 const buttonMaxDelay = 30000;
@@ -8,11 +8,40 @@ const buttonMinDelay = 10000;
 const secondsMultiplier = 10000;
 const buttonTimer = 5;
 
+document.querySelectorAll('#keys button').forEach(button => {
+    button.addEventListener('click', () => {
+        let currentInput = document.getElementById('codeInput').value;
+        if (button.textContent !== 'Clear' && button.textContent !== 'Enter') {
+            if (currentInput.length < 4) {
+                document.getElementById('codeInput').value += button.textContent;
+            }
+        }
+    });
+});
+
+function clearInput() {
+    document.getElementById('codeInput').value = '';
+}
+
+function submitCode() {
+    let code = document.getElementById('codeInput').value;
+    console.log('CODE IS ' + code);
+    if (code === '1234') {
+        console.log('START GAME');
+        startGame();
+    } else {
+        // Invalid code action
+    }
+}
+
+
 function startGame() {
-    this.disabled = true;
-    this.style.display = 'none';
+    coolDownButton.disabled = true;
+    coolDownButton.style.display = 'none';
+    keypad.style.display = 'none';
+    clearInput();
     spawnButton(currentButtonCount);
-    startButtonCounter();
+    startButtonCounter();   
 }
 
 function spawnButton(buttonCount) {
@@ -84,18 +113,17 @@ function scheduleNextButton(buttonCount) {
 }
 
 function startCooldown() {
-    startButton.disabled = true;
-    let cooldownTime = 30;
-    startButton.innerText = `Cooldown: ${cooldownTime} s`;
-    startButton.style.display = 'block';
+    coolDownButton.disabled = true;
+    let cooldownTime = 3;
+    coolDownButton.innerText = `Cooldown: ${cooldownTime} s`;
+    coolDownButton.style.display = 'block';
 
     const cooldownTimer = setInterval(() => {
         cooldownTime--;
-        startButton.innerText = `Cooldown: ${cooldownTime} s`;
-        if (cooldownTime <= 0) {
+        coolDownButton.innerText = `Cooldown: ${cooldownTime} s`;
+        if (cooldownTime == 0) {
             clearInterval(cooldownTimer);
-            enableStartButton();
-            disableFailed();
+            window.location.reload();
         }
     }, 1000);
 }
@@ -109,43 +137,31 @@ function updateButtonCounter() {
     buttonCounterElement.innerText = `Sequence in progress... ${currentButtonCount}/${totalButtonCount}`;
 }
 
-function enableStartButton() {
-    startButton.disabled = false;
-    startButton.innerText = 'Start';
-}
-
 function enableFailed() {
-    let elemet = document.getElementById('failed');
-    elemet.style.display = 'block';
-}
-
-function disableFailed() {
-    let elemet = document.getElementById('failed');
-    elemet.style.display = 'none';
+    document.getElementById('failed').style.display = 'block';
 }
 
 function enableFinished() {
-    let elemet = document.getElementById('finished');
-    elemet.style.display = 'block';
+    document.getElementById('finished').style.display = 'block';
 }
 
-function disableButtonCounterAnimation() {
-    buttonCounterElement.style.animation = 'none';
+function disableButtonCounter() {
+    buttonCounterElement.style.display = 'none';
 }
 
 function winGame() {
     document.body.style.backgroundColor = "green";
     disableWaiting();
     enableFinished();
-    disableButtonCounterAnimation();
+    disableButtonCounter();
 }
 
 function looseGame() {
     disableWaiting();
     enableFailed();
     clearExistingButtonAndTimer(buttonContainer);
-    document.body.style.backgroundColor = "#53202d";
     startCooldown();
+    document.body.style.backgroundColor = "#53202d";
     buttonCounterElement.style.display = 'none';
 }
 

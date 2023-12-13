@@ -5,9 +5,26 @@
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
+    <div id="keypad">
+        <input type="password" id="codeInput" maxlength="4" />
+        <div id="keys">
+            <button>1</button>
+            <button>2</button>
+            <button>3</button>
+            <button>4</button>
+            <button>5</button>
+            <button>6</button>
+            <button>7</button>
+            <button>8</button>
+            <button>9</button>
+            <button>0</button>
+            <button onclick="clearInput()">Clear</button>
+            <button onclick="submitCode()">Enter</button>
+        </div>
+    </div>
     <div id="hackingBackground">
         <div id="buttonContainer" class="font-style">
-            <button id="startButton" class="font-style">Start</button>
+            <button id="coolDown" class="font-style"></button>
             <div>
                 <p id="buttonCounter" class="font-style"></p>
                 <p id="finished" class="font-style">Sequence completed...</p>
@@ -17,6 +34,7 @@
         </div>
     </div>
 
+    <!-- Add your scripts at the end of the body -->
     <script src="script.js"></script>
 </body>
 </html>

@@ -16,8 +16,9 @@
     height: 60px;
 }
 
-#startButton{
+#coolDown{
     width: 300px;
+    display: none;
 }
 
 #hackingBackground {
@@ -53,10 +54,6 @@
     top: calc(50% + 30px);
 }
 
-#finished {
-    top: calc(50% + 30px);
-}
-
 #waiting {
     animation: none;
     top: calc(50% + 80px);
@@ -70,7 +67,7 @@ body {
     align-items: center;
 }
 
-button, p {
+#buttonContainer button, p {
     background-image: url('./pngwing.png'), linear-gradient(#688e4b, #4b5320); /* Adjusted the gradient colors to be lighter */
     background-blend-mode: multiply;
     background-size: cover;
@@ -92,4 +89,11 @@ button, p {
 p {
     display: none;
     animation: blink 1s infinite;
+}
+
+#keypad {
+    z-index: 1;
+}
+#keypad button {
+    z-index: 1;
 }
