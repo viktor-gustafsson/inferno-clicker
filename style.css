@@ -5,10 +5,8 @@
     font-style: normal;
 }
 
-@keyframes blink {
-    0% { opacity: 1; }
+@keyframes blink-animation {
     50% { opacity: 0.5; }
-    100% { opacity: 1; }
 }
 
 .dynamicButton {
@@ -16,7 +14,7 @@
     height: 60px;
 }
 
-#coolDown{
+#coolDown {
     width: 300px;
     display: none;
 }
@@ -49,8 +47,16 @@
     height: 100vh;
 }
 
+#dynamicButtonContainer{
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 90vw;
+    height: 90vh
+}
+
 #failed {
-    background-color: darkred;
+    background-color: red;
     top: calc(50% + 30px);
 }
 
@@ -59,7 +65,6 @@
 }
 
 #waiting {
-    animation: none;
     top: calc(50% + 80px);
 }
 
@@ -71,8 +76,9 @@ body {
     align-items: center;
 }
 
-#buttonContainer button, p {
-    background-image: url('./pngwing.png'), linear-gradient(#688e4b, #4b5320); /* Adjusted the gradient colors to be lighter */
+#buttonContainer button,
+p {
+    background-image: url('./pngwing.png'), linear-gradient(#688e4b, #4b5320);
     background-blend-mode: multiply;
     background-size: cover;
     background-position: center;
@@ -92,7 +98,10 @@ body {
 
 p {
     display: none;
-    animation: blink 1s infinite;
+}
+
+.blink {
+    animation: blink-animation 1s infinite;
 }
 
 #keypad {
@@ -108,7 +117,7 @@ p {
     background-color: #f3f3f3;
     z-index: 1;
     background-color: #4b5320;
-    background-image: url('./pngwing.png'), linear-gradient(#688e4b, #4b5320); /* Adjusted the gradient colors to be lighter */
+    background-image: url('./pngwing.png'), linear-gradient(#688e4b, #4b5320);
     background-blend-mode: multiply;
     background-size: cover;
     background-position: center;
@@ -147,4 +156,55 @@ p {
     cursor: pointer;
     width: 68px;
     box-shadow: 0px 0px 1px rgb(0, 0, 0);
+}
+
+#keys button:nth-child(1) {
+    background-size: 400px;
+}
+
+#keys button:nth-child(2) {
+    background-position: right top;
+    background-size: 100px;
+}
+
+#keys button:nth-child(3) {
+    background-size: 652px;
+}
+
+#keys button:nth-child(4) {
+    background-size: 150px;
+}
+
+#keys button:nth-child(5) {
+    background-size: 250px;
+}
+
+#keys button:nth-child(6) {
+    background-position: top;
+    background-size: 120px;
+}
+
+#keys button:nth-child(7) {
+    background-size: 230px;
+}
+
+#keys button:nth-child(8) {
+    background-size: 177px;
+}
+
+#keys button:nth-child(9) {
+    background-size: 360px;
+}
+
+#keys button:nth-child(10) {
+    background-size: 948px;
+}
+
+#keys button:nth-child(11) {
+    background-position: top left;
+    background-size: 999px;
+}
+
+#keys button:nth-child(12) {
+    background-size: 99px;
 }
