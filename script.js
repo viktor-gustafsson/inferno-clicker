@@ -115,6 +115,10 @@ function spawnButton(buttonCount) {
         currentButtonCount++;
         clearInterval(timer);
         clearExistingButtonAndTimer(buttonContainer);
+        if (currentButtonCount >= currentRun.totalButtonCount) {
+            winGame();
+            return;
+        }
         scheduleNextButton(currentButtonCount);
         updateButtonCounter();
         enableWaiting();
@@ -183,6 +187,7 @@ function enableFailed() {
 
 function enableFinished() {
     document.getElementById('finished').style.display = 'block';
+    document.getElementById('reset').style.display = 'block';
 }
 
 function disableButtonCounter() {

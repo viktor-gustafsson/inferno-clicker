@@ -67,6 +67,10 @@
 #waiting {
     top: calc(50% + 80px);
 }
+#reset {
+    top: calc(50% + 150px);
+    background-color: red;
+}
 
 body {
     margin: 0;
