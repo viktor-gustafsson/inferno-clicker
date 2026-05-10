@@ -100,9 +100,15 @@ function spawnButton(buttonCount) {
     positionTimerDisplay(button);
 
     let timeLeft = buttonTimer;
+    button.classList.add('green');
     const timer = setInterval(() => {
         timeLeft--;
         button.innerText = `${timeLeft}`;
+        if (timeLeft === 3) {
+            button.classList.remove('green');
+        } else if (timeLeft === 1) {
+            button.classList.add('red');
+        }
         if (timeLeft <= 0) {
             clearInterval(timer);
             if (button.parentElement) {

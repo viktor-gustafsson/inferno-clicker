@@ -14,6 +14,21 @@
     height: 60px;
 }
 
+#buttonContainer button.dynamicButton {
+    background-image: url('./pngwing.png'), linear-gradient(#e6d35a, #b09728);
+    background-color: #b09728;
+}
+
+#buttonContainer button.dynamicButton.green {
+    background-image: url('./pngwing.png'), linear-gradient(#5ae65a, #28b028);
+    background-color: #28b028;
+}
+
+#buttonContainer button.dynamicButton.red {
+    background-image: url('./pngwing.png'), linear-gradient(#e65a5a, #b02828);
+    background-color: #b02828;
+}
+
 #coolDown {
     width: 300px;
     display: none;
